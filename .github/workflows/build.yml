@@ -1,7 +1,23 @@
-on: push
+on:
+  push:
+    branches:
+      - main # Change this to your main branch name
+
 jobs:
-first-job:
-runs-on: ubuntu-latest
-steps:
-  - run: node --version
-  - run: npm --version
+  first-job:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 14 # Adjust the Node.js version as needed
+
+      - name: Display Node.js version
+        run: node --version
+
+      - name: Display npm version
+        run: npm --version
